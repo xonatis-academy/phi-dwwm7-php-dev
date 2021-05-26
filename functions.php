@@ -77,3 +77,49 @@ function convertir(int $n): int
 {
     return $n * 60;
 }
+
+/*
+Problème : Veuillez écrire une fonction qui applique une réduction de 20 % à un prix donc qui :
+prend 1 nombre flottant en entrée (prix d'origine)
+retourne un nombre flottant qui correspond au prix moins 20 %
+
+Exemple :
+Pour les données suivantes par exemple : 20.0
+La fonction doit retourner : 16.0
+*/
+
+// 1. Comment peut-on appeller cette fonction (commence par un verbe) : reduire
+// 2. Identifier le type et les valeurs/noms en entrée : float $v
+// 3. Le type de retour : float
+
+function reduire(float $v): float
+{
+    return $v - $v * 20 / 100;
+}
+
+/*
+Problème : Veuillez écrire une fonction qui vérifie si le paiement sans contact est disponible pour un montant donc qui :
+prend 1 nombre flottant en entrée (montant à payer)
+retourne soit vrai si le paiement sans contact est possible ou bien faux sinon
+Le paiement sans contact est disponible si et seulement si le montant à payer est inférieur ou égal à 30 euros.
+
+Exemple :
+Pour les données suivantes par exemple : 20.0
+La fonction doit retourner : true
+*/
+
+// 1. Comment peut-on appeller cette fonction (commence par un verbe) : verifier
+// 2. Identifier le type et les valeurs/noms en entrée : float $montant
+// 3. Le type de retour : bool
+
+function verifier(float $montant): bool
+{
+    if ($montant <= 30)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
