@@ -123,3 +123,31 @@ function verifier(float $montant): bool
         return false;
     }
 }
+
+/*
+Problème : Veuillez écrire une fonction qui compte le nombre de personnes majeurs dans une liste donc qui :
+prend 1 tableau d'ages en entrée
+retourne le nombre total de personnes majeurs
+
+Exemple :
+Pour les données suivantes par exemple : [15, 12, 18, 19, 43, 13, 16, 53]
+La fonction doit retourner : 4
+car il y a 4 personnes dont l'age dépasse l'age requis pour etre majeur
+*/
+
+// 1. Comment peut-on appeller cette fonction (commence par un verbe) : compterMajeurs
+// 2. Identifier le type et les valeurs/noms en entrée : array $tab
+// 3. Le type de retour : int
+
+function compterMajeurs(array $tab): int
+{
+    $compte = 0;
+    foreach ($tab as $element)
+    {
+        if ($element >= 18)
+        {
+            $compte = $compte + 1;
+        }
+    }
+    return $compte;
+}
