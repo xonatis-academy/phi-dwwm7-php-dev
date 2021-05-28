@@ -39,6 +39,31 @@ function verifierPayload(array $data, array $file): ?string
     return null;
 }
 
+function verifierPayloadPourModification(array $data): ?string
+{
+    if (!isset($data['product-name']) || $data['product-name'] === '')
+    {
+        return "Vous devez spécifier un nom de produit";
+    }
+
+    if (!isset($data['product-price']) || $data['product-price'] === '')
+    {
+        return "Vous devez spécifier un prix de produit";
+    }
+
+    if (!is_numeric($data['product-price']))
+    {
+        return "Le prix doit être numérique";
+    }
+
+    if (!isset($data['product-type']) || $data['product-type'] === '')
+    {
+        return "Vous devez spécifier un prix de produit";
+    }
+
+    return null;
+}
+
 function convertirPayloadEnObjet(array $data, array $file): Produit
 {
     $fichier = enregistrerFichierEnvoye($file["product-photo-file"]);
@@ -99,4 +124,38 @@ function delete()
     $produit = Produit::retrieveByPK($_GET['id']);
     $produit->delete();
     onVaRediriger('/catalogue');
+}
+
+function update()
+{
+    if (!isset($_GET['id']))
+    {
+        die();
+    }
+
+    $produit = Produit::retrieveByPK($_GET['id']);
+
+    if (isset($_POST['btn-valider']))
+    {
+        $messageErreur = verifierPayloadPourModification($_POST);
+
+        if ($messageErreur === null)
+        {
+            $produit->nom = $_POST['product-name'];
+            $produit->prix = $_POST['product-price'];
+            $produit->type = $_POST['product-type'];
+            $produit->description = $_POST['product-description'];
+            $produit->save();
+            onVaRediriger('/catalogue');
+        }
+        else
+        {
+            include DOSSIER_VIEWS.'/produit/modifier.html.php';
+        }
+    }
+    else
+    {
+        $messageErreur = null;
+        include DOSSIER_VIEWS.'/produit/modifier.html.php';
+    }
 }

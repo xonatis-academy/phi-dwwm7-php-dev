@@ -48,6 +48,7 @@
                     ?></td>
                     <td>
                         <a href="/produit-crud/router.php/details-produit?id=<?php echo $element->id ?>" class="btn btn-primary">Détails</a> 
+                        <a href="/produit-crud/router.php/modifier-produit?id=<?php echo $element->id ?>" class="btn btn-primary">Modifier</a> 
                         <a href="/produit-crud/router.php/supprimer-produit?id=<?php echo $element->id ?>" class="btn btn-danger">Supprimer</a>
                     </td>
                 </tr>
