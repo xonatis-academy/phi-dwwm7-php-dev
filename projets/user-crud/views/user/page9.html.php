@@ -49,6 +49,9 @@
                     </td>
                     <td>
                         <a href="/user-crud/router.php/details-utilisateur?id=<?php echo $element->id ?>" class="btn btn-primary">Détails</a> 
+                        <!-- Exercice 6 : Ajout d'un bouton -->
+                        <a href="/user-crud/router.php/modifier-mendiant?id=<?php echo $element->id ?>" class="btn btn-info">Modifier</a> 
+
                         <a href="/user-crud/router.php/supprimer-utilisateur?id=<?php echo $element->id ?>" class="btn btn-danger">Supprimer</a>
                     </td>
                 </tr>

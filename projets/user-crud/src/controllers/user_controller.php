@@ -106,3 +106,30 @@ function delete()
     $user->delete();
     onVaRediriger('/liste');
 }
+
+function update()
+{
+    // Exercice 2 : Récupération du mendiant à modifier
+    if (!isset($_GET['id']))
+    {
+        die();
+    }
+
+    $user = User::retrieveByPK($_GET['id']);
+
+    if (isset($_POST['btn-valider']))
+    {
+        // Exercice 3 : Modification des propriétés de l'objet
+        $user->nom = $_POST['user-lastname'];
+        $user->prenom = $_POST['user-firstname'];
+        $user->role = $_POST['user-role'];
+        $user->email = $_POST['user-email'];
+        $user->mot_de_passe = $_POST['user-password'];
+
+        // Exercice 4 : Sauvegarder l'objet en base de données
+        $user->save();
+    }
+    
+    // Afficher la vue
+    include DOSSIER_VIEWS.'/user/modifier.html.php';
+}

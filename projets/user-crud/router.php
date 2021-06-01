@@ -33,7 +33,14 @@ if (isset($_SERVER['PATH_INFO']) == false)
 {
     require DOSSIER_CONTROLLERS.'/user_controller.php';
     delete();
-} else
+} 
+// Exercice 5 : Ajouter la route
+else if ($_SERVER['PATH_INFO'] == '/modifier-mendiant')
+{
+    require DOSSIER_CONTROLLERS.'/user_controller.php';
+    update();
+} 
+else
 {
     require DOSSIER_CONTROLLERS.'/notfound_controller.php';
     index();
